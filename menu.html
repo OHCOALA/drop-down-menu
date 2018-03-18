@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--제이쿼리 드롭다운 메뉴 만들기-->
+	<title>jquery-tap-02</title>
+	<!-- 제이쿼리 파일 불러오기 -->
+ <script type="text/javascript" src="/program-file/jquery-3.2.1.min.js"></script>
+ <!-- CDN :온라인 참조 url넣어보기-->
+ <script src="http://code.jquery.com/jquery-latest.js"></script>
+ <script type="text/javascript"src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <!--제이쿼리가 잘 불러와졌는지 ready로 확인하기-->
+ <!--제이쿼리로 없어졌다 내려오는 드롭다운 효과 만들기-->
+ <script type="text/javascript">
+ 	$(document).ready(function(){
+ 		/*$("ul.sub").hide();
+ 		$("ul.menu li").hover(function(){
+ 			$("ul:not(:animated)",this).slideDown("fast");
+ 		},
+ 		function(){
+ 			$("ul",this).sildeUp("fast");
+ 		});*/
+
+ 		$(".pointer").hover(function(){//마우스오버 이벤트 함수//부모에 마우스 오버시 (hover 이벤트 두개 묶어서)↗이벤트사용
+
+	$(this).parent().find(".sub").slideDown('nomal').show();//부모에 해당되었을시  sub-nav를 찾고 보여주기
+	$(this).parent().hover(function(){
+	},function(){
+		$(this).parent().find(".sub").slideUp('fast');//sub-nav를 위로 빠르게 올라가게 해라//slideDown('slow')<-속도느리게
+		});
+	 	});
+ 	});
+ </script>
+ <style type="text/css">
+ /*스타일 시트 포지션 속성만 잡아준다*/
+ 	*{margin: 0;padding: 0;list-style: none;}
+ 	#container{margin: 100px auto;width: 1000px;height: 400px;background: #00BCD4;}
+ 	ul{width: 100%;background:linear-gradient(135deg, #5b247a 0%,#1bcedf 100%);}
+ 	ul.menu li{float: left;width: 179px;height: 48px;background:linear-gradient(135deg, #0FF0B3 0%,#036ED9 100%);position: relative;}
+ 	ul.menu li a{display:block; width: 100%;height: 100%;line-height: 48px;text-indent: 30px;font-weight: bold;color: #eee;text-decoration: none;}
+ 	/*text-indent 들여쓰기*/
+ 	ul.menu li a:hover{background:linear-gradient(135deg, #fad961 0%,#f76b1c 100%);}
+ 	ul.menu li ul.sub{position: absolute;/*ul에 포지션을 주는이유:서로 움직이지 않게 묶기위함*/;}
+ 	ul.menu {zoom:1;}
+ 	ul.menu:after{height: 0;visibility: hidden;/*visibility:hidden = display:none이지만 공간여백차지*/content: ".";display: block; clear: both;}
+
+ 	.center{margin: 10px;text-align: center;margin-top: 80px;}
+ 	.center p{padding:20px;color: #fff}
+ </style>
+</head>
+<body>
+	<div id="container">
+		<ul class="menu">
+			<li class="pointer"><a href="#">Hi</a>
+				<ul class="sub">
+					<li><a href="#">sub menu</a></li>
+					<li><a href="#">sub menu</a></li>
+					<li><a href="#">sub menu</a></li>
+				</ul>
+			</li>
+			<li class="pointer"><a href="#">NICE</a>
+				<ul class="sub">
+					<li><a href="#">sub menu</a></li>
+					<li><a href="#">sub menu</a></li>
+					<li><a href="#">sub menu</a></li>
+				</ul>
+			</li>
+			<li class="pointer"><a href="#">TO MEET</a>
+				<ul class="sub">
+					<li><a href="#">sub menu</a></li>
+					<li><a href="#">sub menu</a></li>
+					<li><a href="#">sub menu</a></li>
+				</ul>
+			</li>
+		</ul>
+		<div class="center">
+			hi nice to meet you
+		</div>
+	</div>
+</body>
+</html>
